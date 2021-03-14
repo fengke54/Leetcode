@@ -9,6 +9,11 @@ class Solution(object):
         new_start, new_end = newInterval
         idx, n = 0, len(intervals)
         output = []
+        
+        # add all intervals before newInterval
+        while idx < n and new_start > intervals[idx][0]:
+            output.append(intervals[idx])
+            idx += 1 
             
         # add new intervals 
         # if there is no overlap, add an inverval
