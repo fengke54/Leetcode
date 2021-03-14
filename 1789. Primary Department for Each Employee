@@ -10,3 +10,4 @@ HAVING COUNT(employee_id) = 1
 
 # primary flag = Y
 # Groupby employee id, and only has one employee id
+# Union combines two select statement and return unique values of each select. Those two must have same rows 
