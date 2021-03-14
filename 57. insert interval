@@ -1,0 +1,34 @@
+class Solution(object):
+    def insert(self, intervals, newInterval):
+        """
+        :type intervals: List[List[int]]
+        :type newInterval: List[int]
+        :rtype: List[List[int]]
+        """
+        # init data
+        new_start, new_end = newInterval
+        idx, n = 0, len(intervals)
+        output = []
+            
+        # add new intervals 
+        # if there is no overlap, add an inverval
+        if not output or output[-1][1] < new_start: 
+            output.append(newInterval)
+        else: 
+            output[-1][1] = max(output[-1][1], new_end)
+
+        # add rest of the invervals, merge with new interval if necessary
+        while idx < n:
+            interval = intervals[idx]
+            start, end = interval
+            idx += 1
+            
+            # if there is no overlap, just add the interval
+            if output[-1][1] < start:
+                output.append(interval)
+            # if there is an overlap, merge with the last interval
+            else: 
+                output[-1][1] = max(output[-1][1], end)
+                
+        return output 
+      
