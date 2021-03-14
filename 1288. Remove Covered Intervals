@@ -1,0 +1,21 @@
+class Solution(object):
+    def removeCoveredIntervals(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: int
+        """
+        count = 0
+        prev_interval = None
+
+		# Sorting ascendingly by start value and then descendingly by end value to cover all cases
+        for curr_interval in sorted(intervals, key=lambda x: (x[0], -x[1])):
+			# Check if previous interval exists and previous interval includes current interval
+            if prev_interval and prev_interval[0] <= curr_interval[0] and prev_interval[1] >= curr_interval[1]:
+                continue
+            
+            prev_interval = curr_interval
+            count += 1
+
+        return count
+    
+        
