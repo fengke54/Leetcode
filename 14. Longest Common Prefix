@@ -1,0 +1,14 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if not strs:
+            return ''
+        min_len = min(strs, key = len)
+        for i, char in enumerate(min_len):
+            for rest in strs:
+                if rest[i] != char:
+                    return min_len[:i]
+        return min_len 
