@@ -1,0 +1,17 @@
+class Solution(object):
+    def largestUniqueNumber(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        counter = collections.Counter(A)
+        result = []
+        
+        for val in counter:
+            if counter[val] == 1:
+                result.append(val)
+                
+        if len(result) > 0:
+            return max(result)
+        else:
+            return -1
