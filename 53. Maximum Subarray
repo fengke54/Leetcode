@@ -1,0 +1,13 @@
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        new = max_total = nums[0] # start adding up from zero
+        
+        for i in range(1, len(nums)):
+            new = max(nums[i], nums[i] + new)
+            max_total = max(new, max_total)
+            
+        return max_total
