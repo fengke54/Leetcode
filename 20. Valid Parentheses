@@ -1,0 +1,23 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        # construct a list to store key values 
+        stack = []
+        # build a dictionary for reference later
+        lookup = {")": "(", "}": "{", "]": "["}
+        
+        # The logic is to check if the brackets is closed off or not. closed off meaning that the end of the list should only have keys (not values) in lookup. 
+        for p in s: 
+            if p in lookup.values():  
+                stack.append(p)    # if it is a key in look up, add the value. We do not care about keys 
+            elif stack and lookup[p] == stack[-1]:  # stack[-1] means very last value in the lst. lookup[p] means keys. If they are all closed off brackets, we can remove it.
+                stack.pop()
+            else:
+                return False 
+        
+        return stack == [] # if it is an empty list it is true. If not False. 
+        
+        
