@@ -1,0 +1,32 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        
+        curr = dummy = ListNode() # start off with a dummy node and set up current node
+        
+        
+        while l1 and l2:        
+            if l1.val < l2.val: # situation 1, l1<l2, add l1 to the current node, update pointer on l1
+                curr.next = l1
+                l1 = l1.next
+            else:  # situation 2, l2<l1, add l2 to the current node, update pointer on l2
+                curr.next = l2
+                l2 = l2.next
+            curr = curr.next # update our current pointer 
+        
+        if l1 == None:      # situation 3, l1 is empty, pointer directly goes to l2
+            curr.next = l2
+        elif l2 == None:  # situation 4, l2 is empty, pointer directly goes to l1
+            curr.next = l1
+        
+        return dummy.next   # we not only need the last node, we need all previous nodes
+        
