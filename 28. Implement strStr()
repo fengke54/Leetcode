@@ -1,0 +1,16 @@
+class Solution(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        
+# see if needle is in stack, one way is to measure length, the other is to compare value. For value, haystack[i:i+length] can either equal or not equal to needle. If equal, needle is in, if not return -1. 
+        length = len(needle)
+        if length == 0: 
+            return 0
+        for i in range(len(haystack)):
+            if haystack[i:i+length] == needle:
+                return i
+        return -1 
