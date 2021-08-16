@@ -1,0 +1,25 @@
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        # [::-1] :: means from beginning to the end, -1 is the interval. So this is the flip over of list
+        digits = digits[::-1]
+        carry, i = 1, 0 
+        
+        # 1) situation 1: carry doesn't go beyond original list. with 9 or without 9. without 9 is easy, just +1, if with 9, then it becomes a 0.
+        # 2) situation 2: append 1 at the beginning, rest is 0.
+        while carry: 
+            if i < len(digits):
+                if digits[i] == 9:
+                    digits[i] = 0 
+                else: 
+                    digits[i] += 1
+                    carry = 0 
+            else:
+                digits.append(1)
+                carry = 0 
+            i += 1
+        return digits[::-1]
+                
