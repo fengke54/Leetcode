@@ -1,0 +1,39 @@
+class Solution(object):
+    def titleToNumber(self, columnTitle):
+        """
+        :type columnTitle: str
+        :rtype: int
+        """
+        
+        """"
+        Part I
+        understand how excel title works
+        A-1
+        B-2
+        C-3
+        A = ord(cT[i]) - ord('A') + 1 = 1 - 1 + 1= 1
+        B = 2 - 1 + 1 = 2
+        C = 3 - 1 + 1 = 3
+        ord returns an integer representing the Unicode character
+        Also, each position needs to multiple by 26
+        
+        Part II. example
+        ACB
+        A = 26 * len('ABC') + ord(cT[i]) - ord('A')
+        B = 26 * len('AB') + ord(cT[i]) - ord('A')
+        C = 26 * len('A') + ord(cT[i]) - ord('A') 
+        len can be represented through iteration of i.
+        
+        Time Complexity: iterate through every element of the list O(N)
+        Space complexity: only one string list, O(1)
+        
+        """
+        result = 0 
+        n = len(columnTitle)
+        for i in range(n):
+            result *= 26
+            result += ((ord(columnTitle[i]) - ord('A') + 1))
+        return result 
+        
+
+        
