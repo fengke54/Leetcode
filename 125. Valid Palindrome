@@ -1,0 +1,17 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        
+        """1. remove irrelavant symbols from the lower_case
+        2.str == str[::-1]， palindrome"""
+    
+        s_str = filter(lambda ch: ch.isalnum(), s) # filter(filter function, iter)
+        lower_s = map(lambda ch: ch.lower(), s_str) # map(go through all func, iter) 
+        s_pld = list(lower_s) #filter, map both create object, need to make it a list 
+        
+        reverse = s_pld[::-1]
+
+        return s_pld == reverse
