@@ -1,0 +1,16 @@
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        
+        # build hashmap: key is character and value is how often it appears
+        count = collections.Counter(s)
+        
+        # find the index
+        
+        for idx, ch in enumerate(s):
+            if count[ch] == 1:
+                return idx   # return means end the loop. It ends at the first letter with no duplicates
+        return -1
