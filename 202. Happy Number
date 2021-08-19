@@ -1,0 +1,34 @@
+class Solution(object):
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        """
+        linked list problem. 82 - 68 - 100 - 1
+        If the end of the list is 1, return Ture, otherwise False
+         
+        calculate sum of squares for digits 
+        other than the very first number, other digits can be calculated through digit % 10, loop through every digit
+        
+        """
+        visit = set() # set, makes O(N) for time complexity 
+        
+        while n not in visit: 
+            visit.add(n)
+            n = self.sumOfsquare(n)
+            
+            if n == 1:
+                return True
+        False
+        
+    def sumOfsquare(self, n): # define another function in the class 
+        
+        result = 0 
+        
+        while n: 
+            digit = n % 10 
+            digit = digit ** 2
+            result += digit
+            n = n // 10
+        return result 
